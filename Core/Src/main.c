@@ -26,7 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "audio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,7 +96,8 @@ int main(void)
   MX_I2C3_Init();
   MX_SAI1_Init();
   /* USER CODE BEGIN 2 */
-
+  Audio_Init();
+  Audio_Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
