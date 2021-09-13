@@ -1,5 +1,11 @@
 MDK-ARM/DebugConfig/
 MDK-ARM/fir-player-axoloti/
 MDK-ARM/RTE/
+MDK-ARM/JLinkLog.txt
+MDK-ARM/JLinkSettings.ini
+*.TMP
+*.dep
+*.bak
 *.uvguix.*
 *.lst
+.mxproject
