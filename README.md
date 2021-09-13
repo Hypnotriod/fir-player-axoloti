@@ -1,3 +1,3 @@
 # fir-player-axoloti
 
-WIP: on FIR player implementation firmware based on [Axoloti boeard](http://www.axoloti.com/)
+This branch is minimal configurationThis branch is minimum configuration to work with [Axoloti board](http://www.axoloti.com/) audio.
