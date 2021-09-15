@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "audio.h"
+#include "fir.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,6 +97,7 @@ int main(void)
   MX_I2C3_Init();
   MX_SAI1_Init();
   /* USER CODE BEGIN 2 */
+  Fir_Init();
   Audio_Init();
   Audio_Start();
   /* USER CODE END 2 */
@@ -105,7 +107,18 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    if (Audio_FirstBufferHalfReady)
+    {
+      //Audio_ToLeftMono(&Audio_CircularBuffer[0]);
+      Fir_Process(&Audio_CircularBuffer[0]);
+      Audio_OnFirstBufferHalfProcessed();
+    }
+    if (Audio_SecondBufferHalfReady)
+    {
+      //Audio_ToLeftMono(&Audio_CircularBuffer[AUDIO_CIRCULAR_BUFFER_HALF_SIZE]);
+      Fir_Process(&Audio_CircularBuffer[AUDIO_CIRCULAR_BUFFER_HALF_SIZE]);
+      Audio_OnSecondBufferHalfProcessed();
+    }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

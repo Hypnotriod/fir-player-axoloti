@@ -12,13 +12,16 @@
 #include "sai.h"
 #include <stdbool.h>
 
-#define AUDIO_CIRCULAR_BUFFER_SIZE          32
+#define AUDIO_CIRCULAR_BUFFER_SIZE          512 // 32
 #define AUDIO_CIRCULAR_BUFFER_HALF_SIZE     (AUDIO_CIRCULAR_BUFFER_SIZE / 2)
 #define AUDIO_CIRCULAR_BUFFER_QUARTER_SIZE  (AUDIO_CIRCULAR_BUFFER_SIZE / 4)
-#define AUDIO_SAMPLE_RATE                   48000
+#define AUDIO_SAMPLE_RATE                   44100
+#define AUDIO_CHANNELS_NUM                  2
 
 void Audio_Init(void);
 void Audio_Start(void);
+void Audio_ToLeftMono(int32_t*);
+void Audio_ToRightMono(int32_t*);
 
 extern int32_t Audio_CircularBuffer[AUDIO_CIRCULAR_BUFFER_SIZE];
 extern volatile bool Audio_SecondBufferHalfReady;

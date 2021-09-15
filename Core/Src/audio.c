@@ -34,6 +34,26 @@ void Audio_Start(void)
   hsai_BlockA1.hdmatx->XferHalfCpltCallback = NULL;
 }
 
+void Audio_ToLeftMono(int32_t * pBuff)
+{
+  int i;
+  
+  for (i = 0; i < AUDIO_CIRCULAR_BUFFER_HALF_SIZE; i += AUDIO_CHANNELS_NUM)
+  {
+    pBuff[i + 1] = pBuff[i];
+  }
+}
+
+void Audio_ToRightMono(int32_t * pBuff)
+{
+  int i;
+  
+  for (i = 0; i < AUDIO_CIRCULAR_BUFFER_HALF_SIZE; i += AUDIO_CHANNELS_NUM)
+  {
+    pBuff[i] = pBuff[i + 1];
+  }
+}
+
 void Audio_FullTransferCompleteCallback(struct __DMA_HandleTypeDef * hdma)
 {
   Audio_SecondBufferHalfReady = true;
