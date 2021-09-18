@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include "audio.h"
 #include "fir.h"
+#include "impulse.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,6 +99,7 @@ int main(void)
   MX_SAI1_Init();
   /* USER CODE BEGIN 2 */
   Fir_Init();
+  Fir_LoadImpulse(Impulses[0]);
   Audio_Init();
   Audio_Start();
   /* USER CODE END 2 */

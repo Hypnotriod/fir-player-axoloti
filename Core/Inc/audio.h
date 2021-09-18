@@ -12,7 +12,7 @@
 #include "sai.h"
 #include <stdbool.h>
 
-#define AUDIO_CIRCULAR_BUFFER_SIZE          512 // 32
+#define AUDIO_CIRCULAR_BUFFER_SIZE          128 // 32
 #define AUDIO_CIRCULAR_BUFFER_HALF_SIZE     (AUDIO_CIRCULAR_BUFFER_SIZE / 2)
 #define AUDIO_CIRCULAR_BUFFER_QUARTER_SIZE  (AUDIO_CIRCULAR_BUFFER_SIZE / 4)
 #define AUDIO_SAMPLE_RATE                   44100
