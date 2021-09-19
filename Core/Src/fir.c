@@ -5,13 +5,14 @@
  *      Author: IPikin
  */
 
+#include "ccmram.h"
 #include "fir.h"
 #include "stm32f4xx_hal.h"
 #include "arm_math.h"
 
-static q31_t firCoeffs[FIR_TAPS_NUM];
-static q31_t firState[FIR_BLOCK_SIZE + FIR_TAPS_NUM];
-static arm_fir_instance_q31 firInstance;
+static q31_t firCoeffs[FIR_TAPS_NUM] CCM_RAM_SECTION;
+static q31_t firState[FIR_BLOCK_SIZE + FIR_TAPS_NUM] CCM_RAM_SECTION;
+static arm_fir_instance_q31 firInstance CCM_RAM_SECTION;
 
 void Fir_Init(void)
 {
@@ -41,8 +42,8 @@ void Fir_Process(int32_t * pBuff)
   
   arm_fir_fast_q31(&firInstance, input, output, FIR_BLOCK_SIZE);
   
-  for (i = 0; i < (FIR_BLOCK_SIZE * AUDIO_CHANNELS_NUM); i += AUDIO_CHANNELS_NUM)
+  for (i = 0; i < FIR_BLOCK_SIZE; i++)
   {
-    pBuff[i] = pBuff[i + 1] = output[i / AUDIO_CHANNELS_NUM];
+    pBuff[i * AUDIO_CHANNELS_NUM] = pBuff[i * AUDIO_CHANNELS_NUM + 1] = output[i];
   }
 }

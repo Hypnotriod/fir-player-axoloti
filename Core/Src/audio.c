@@ -24,8 +24,8 @@ void Audio_Init(void)
 
 void Audio_Start(void)
 {
-  HAL_SAI_Transmit_DMA(&hsai_BlockA1, (uint8_t*) Audio_CircularBuffer, AUDIO_CIRCULAR_BUFFER_SIZE);
   HAL_SAI_Receive_DMA(&hsai_BlockB1, (uint8_t*) Audio_CircularBuffer, AUDIO_CIRCULAR_BUFFER_SIZE);
+  HAL_SAI_Transmit_DMA(&hsai_BlockA1, (uint8_t*) Audio_CircularBuffer, AUDIO_CIRCULAR_BUFFER_SIZE);
 
   hsai_BlockB1.hdmarx->XferCpltCallback = Audio_FullTransferCompleteCallback;
   hsai_BlockB1.hdmarx->XferHalfCpltCallback = Audio_HalfTransferCompleteCallback;

@@ -89,7 +89,7 @@ int main(void)
   PeriphCommonClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  __CCMDATARAMEN_CLK_ENABLE();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -100,6 +100,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   Fir_Init();
   Fir_LoadImpulse(Impulses[0]);
+  HAL_Delay(100); // Wait for codec
   Audio_Init();
   Audio_Start();
   /* USER CODE END 2 */
