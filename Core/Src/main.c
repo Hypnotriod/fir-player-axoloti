@@ -109,7 +109,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
     if (Audio_FirstBufferHalfReady)
     {
       //Audio_ToLeftMono(&Audio_CircularBuffer[0]);
@@ -122,6 +121,8 @@ int main(void)
       Fir_Process(&Audio_CircularBuffer[AUDIO_CIRCULAR_BUFFER_HALF_SIZE]);
       Audio_OnSecondBufferHalfProcessed();
     }
+    /* USER CODE END WHILE */
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
