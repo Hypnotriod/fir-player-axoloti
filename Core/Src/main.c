@@ -29,6 +29,7 @@
 #include "audio.h"
 #include "fir.h"
 #include "impulse.h"
+#include "ui.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -119,6 +120,7 @@ int main(void)
       Fir_Process(&Audio_CircularBuffer[AUDIO_CIRCULAR_BUFFER_HALF_SIZE]);
       Audio_OnSecondBufferHalfProcessed();
     }
+    UI_Update();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

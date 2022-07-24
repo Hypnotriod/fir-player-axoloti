@@ -1444,9 +1444,9 @@ const int16_t AES_close_Vint30_4x12[] = {
 
 // ************************************************************************
 const int16_t * Impulses[IMPULSES_NUM] = {
-  //AES_big_4x10,
-  //AES_big_Vint30_4x12,
   AES_close_4x10,
-  //AES_close_EV_4x12,
-  //AES_close_Vint30_4x12
+  AES_big_4x10,
+  AES_big_Vint30_4x12,
+  AES_close_EV_4x12,
+  AES_close_Vint30_4x12
 };
