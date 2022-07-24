@@ -58,6 +58,13 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define ENC0_B_Pin GPIO_PIN_1
+#define ENC0_B_GPIO_Port GPIOA
+#define ENC0_A_INT_Pin GPIO_PIN_0
+#define ENC0_A_INT_GPIO_Port GPIOA
+#define ENC0_A_INT_EXTI_IRQn EXTI0_IRQn
+#define ENC0_BTN_Pin GPIO_PIN_2
+#define ENC0_BTN_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
@@ -67,5 +74,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
