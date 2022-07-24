@@ -11,7 +11,7 @@
 #include "fir.h"
 #include "stm32f4xx_hal.h"
 
-static volatile uint8_t encoder0Rotations = 0;
+static volatile int8_t encoder0Rotations = 0;
 static uint8_t impulseIndex = 0;
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
@@ -22,11 +22,18 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
 }
 
-void UI_Update()
+void UI_Update(void)
 {
   if (encoder0Rotations)
   {
-    impulseIndex = (impulseIndex + encoder0Rotations) % IMPULSES_NUM;
+    if (encoder0Rotations > 0)
+    {
+      impulseIndex = (impulseIndex + 1) % IMPULSES_NUM;
+    }
+    else
+    {
+      impulseIndex = (IMPULSES_NUM + impulseIndex - 1) % IMPULSES_NUM;
+    }
     encoder0Rotations = 0;
     Fir_LoadImpulse(Impulses[impulseIndex]);
   }
