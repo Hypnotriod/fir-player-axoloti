@@ -6,7 +6,7 @@
 
 #define IMPULSE_SAMPLES_NUM 4410
 #define IMPULSE_SIZE        (IMPULSE_SAMPLES_NUM * 2)
-#define IMPULSES_NUM        5
+#define IMPULSES_NUM        17
 
 extern const int16_t * Impulses[IMPULSES_NUM];
 
