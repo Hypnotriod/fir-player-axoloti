@@ -63,10 +63,28 @@ void Error_Handler(void);
 #define ENC0_A_INT_Pin GPIO_PIN_0
 #define ENC0_A_INT_GPIO_Port GPIOA
 #define ENC0_A_INT_EXTI_IRQn EXTI0_IRQn
+#define SSD1306_CS_Pin GPIO_PIN_4
+#define SSD1306_CS_GPIO_Port GPIOA
 #define ENC0_BTN_Pin GPIO_PIN_2
 #define ENC0_BTN_GPIO_Port GPIOA
+#define SSD1306_DC_Pin GPIO_PIN_6
+#define SSD1306_DC_GPIO_Port GPIOA
+#define SSD1306_SCK_Pin GPIO_PIN_5
+#define SSD1306_SCK_GPIO_Port GPIOA
+#define SSD1306_MOSI_Pin GPIO_PIN_7
+#define SSD1306_MOSI_GPIO_Port GPIOA
+#define SSD1306_Reset_Pin GPIO_PIN_0
+#define SSD1306_Reset_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-
+#define SSD1306_USE_SPI
+#define SSD1306_SPI_PORT    hspi1
+#define SSD1306_CS_Port     SSD1306_CS_GPIO_Port
+#define SSD1306_DC_Port     SSD1306_DC_GPIO_Port
+#define SSD1306_Reset_Port  SSD1306_Reset_GPIO_Port
+#define SSD1306_INCLUDE_FONT_6x8
+#define SSD1306_INCLUDE_FONT_7x10
+#define SSD1306_INCLUDE_FONT_11x18
+#define SSD1306_INCLUDE_FONT_16x26
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
