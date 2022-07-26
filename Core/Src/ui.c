@@ -9,6 +9,7 @@
 #include "main.h"
 #include "impulse.h"
 #include "fir.h"
+#include "ssd1306.h"
 #include "stm32f4xx_hal.h"
 
 static volatile int8_t encoder0Rotations = 0;
