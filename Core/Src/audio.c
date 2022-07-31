@@ -5,6 +5,7 @@
  *      Author: IPikin
  */
 
+#include <string.h>
 #include "adau1961.h"
 #include "audio.h"
 
@@ -52,6 +53,21 @@ void Audio_ToRightMono(int32_t * pBuff)
   {
     pBuff[i] = pBuff[i + 1];
   }
+}
+
+void Audio_Mute(void)
+{
+  memset(Audio_CircularBuffer, 0, sizeof(Audio_CircularBuffer));
+}
+
+void Audio_MuteInput(void)
+{
+  ADAU1961_MuteInput();
+}
+
+void Audio_UnmuteInput(void)
+{
+  ADAU1961_UnmuteInput();
 }
 
 void Audio_FullTransferCompleteCallback(struct __DMA_HandleTypeDef * hdma)

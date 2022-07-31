@@ -59,5 +59,7 @@
 #define ADAU1961_REG_R67_DJITTER 0x4036
 
 void ADAU1961_Init(uint16_t samplerate, bool isMaster);
+void ADAU1961_MuteInput(void);
+void ADAU1961_UnmuteInput(void);
 
 #endif /* INC_ADAU1961_H_ */

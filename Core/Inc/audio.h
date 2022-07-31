@@ -22,6 +22,9 @@ void Audio_Init(void);
 void Audio_Start(void);
 void Audio_ToLeftMono(int32_t*);
 void Audio_ToRightMono(int32_t*);
+void Audio_MuteInput(void);
+void Audio_UnmuteInput(void);
+void Audio_Mute(void);
 
 extern int32_t Audio_CircularBuffer[AUDIO_CIRCULAR_BUFFER_SIZE];
 extern volatile bool Audio_SecondBufferHalfReady;

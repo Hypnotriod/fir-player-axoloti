@@ -30,6 +30,7 @@
 #include "audio.h"
 #include "fir.h"
 #include "impulse.h"
+#include "dsp.h"
 #include "ui.h"
 #include "ssd1306_fonts.h"
 #include "ssd1306.h"
@@ -115,16 +116,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    if (Audio_FirstBufferHalfReady)
-    {
-      Fir_Process(&Audio_CircularBuffer[0]);
-      Audio_OnFirstBufferHalfProcessed();
-    }
-    if (Audio_SecondBufferHalfReady)
-    {
-      Fir_Process(&Audio_CircularBuffer[AUDIO_CIRCULAR_BUFFER_HALF_SIZE]);
-      Audio_OnSecondBufferHalfProcessed();
-    }
+    Dsp_Process();
     UI_Update();
     /* USER CODE END WHILE */
 
