@@ -184,3 +184,15 @@ void ADAU1961_Init(uint16_t samplerate, bool isMaster)
 {
   ADAU1961_hardwareInit(samplerate, isMaster);
 }
+
+void ADAU1961_MuteInput(void)
+{
+  ADAU1961_writeRegister(ADAU1961_REG_R20_LDVOL, 0xFF);
+  ADAU1961_writeRegister(ADAU1961_REG_R21_RDVOL, 0xFF);
+}
+
+void ADAU1961_UnmuteInput(void)
+{
+  ADAU1961_writeRegister(ADAU1961_REG_R20_LDVOL, 0x00);
+  ADAU1961_writeRegister(ADAU1961_REG_R21_RDVOL, 0x00);
+}

@@ -9,6 +9,8 @@
 #include "main.h"
 #include "impulse.h"
 #include "fir.h"
+#include "dsp.h"
+#include "audio.h"
 #include "ssd1306.h"
 #include "stm32f4xx_hal.h"
 
@@ -36,7 +38,11 @@ void UI_Update(void)
       impulseIndex = (IMPULSES_NUM + impulseIndex - 1) % IMPULSES_NUM;
     }
     encoder0Rotations = 0;
+    Audio_MuteInput();
+    Audio_Mute();
     UI_LoadImpulse();
+    Dsp_Process();
+    Audio_UnmuteInput();
   }
 }
 

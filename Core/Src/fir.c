@@ -5,6 +5,7 @@
  *      Author: IPikin
  */
 
+#include <string.h>
 #include "ccmram.h"
 #include "fir.h"
 #include "stm32f4xx_hal.h"
@@ -26,6 +27,7 @@ void Fir_LoadImpulse(const int16_t * pImpulse)
   {
     firCoeffs[i] = pImpulse[i] << (16 - FIR_HEADROOM_POW_2);
   }
+  memset(firState, 0, sizeof(firState));
 }
 
 void Fir_Process(int32_t * pBuff)
