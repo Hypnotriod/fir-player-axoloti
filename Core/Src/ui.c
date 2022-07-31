@@ -36,6 +36,17 @@ void UI_Update(void)
       impulseIndex = (IMPULSES_NUM + impulseIndex - 1) % IMPULSES_NUM;
     }
     encoder0Rotations = 0;
-    Fir_LoadImpulse(Impulses[impulseIndex]);
+    UI_LoadImpulse();
   }
+}
+
+void UI_LoadImpulse(void)
+{
+  Fir_LoadImpulse(Impulses[impulseIndex].impulse);
+  SSD1306_Fill(Black);
+  SSD1306_SetCursor(0, 32);
+  SSD1306_WriteString(Impulses[impulseIndex].vendor, Font_11x18, White);
+  SSD1306_SetCursor(0, 52);
+  SSD1306_WriteString(Impulses[impulseIndex].description, Font_6x8, White);
+  SSD1306_UpdateScreen();
 }

@@ -8,6 +8,12 @@
 #define IMPULSE_SIZE        (IMPULSE_SAMPLES_NUM * 2)
 #define IMPULSES_NUM        17
 
-extern const int16_t * Impulses[IMPULSES_NUM];
+typedef struct {
+  const int16_t *impulse;
+  const char *vendor;
+  const char *description;
+} Impulse_t;
+
+extern const Impulse_t Impulses[IMPULSES_NUM];
 
 #endif

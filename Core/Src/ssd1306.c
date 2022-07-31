@@ -254,7 +254,7 @@ char SSD1306_WriteChar(char ch, FontDef Font, SSD1306_COLOR color) {
 }
 
 // Write full string to screenbuffer
-char SSD1306_WriteString(char* str, FontDef Font, SSD1306_COLOR color) {
+char SSD1306_WriteString(const char *str, FontDef Font, SSD1306_COLOR color) {
     // Write until null-byte
     while (*str) {
         if (SSD1306_WriteChar(*str, Font, color) != *str) {
