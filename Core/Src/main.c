@@ -31,6 +31,7 @@
 #include "fir.h"
 #include "impulse.h"
 #include "ui.h"
+#include "ssd1306_fonts.h"
 #include "ssd1306.h"
 /* USER CODE END Includes */
 
@@ -104,7 +105,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   SSD1306_Init();
   Fir_Init();
-  Fir_LoadImpulse(Impulses[0]);
+  UI_LoadImpulse();
   HAL_Delay(100); // Wait for codec
   Audio_Init();
   Audio_Start();

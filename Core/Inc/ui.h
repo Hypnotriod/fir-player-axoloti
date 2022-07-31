@@ -9,5 +9,6 @@
 #define UI_H_
 
 void UI_Update(void);
+void UI_LoadImpulse(void);
 
 #endif /* UI_H_ */
