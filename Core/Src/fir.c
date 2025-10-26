@@ -25,7 +25,7 @@ void Fir_LoadImpulse(const int16_t * pImpulse)
   int i;
   for (i = 0; i < FIR_TAPS_NUM; i++)
   {
-    firCoeffs[i] = (((int32_t)pImpulse[i] << 16) / FIR_HEADROOM_POW_2);
+    firCoeffs[i] = pImpulse[i] << 16;
   }
   memset(firState, 0, sizeof(firState));
 }
