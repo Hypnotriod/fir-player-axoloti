@@ -12,7 +12,6 @@
 
 #define FIR_TAPS_NUM        1896 // 43 ms
 #define FIR_BLOCK_SIZE      AUDIO_CIRCULAR_BUFFER_QUARTER_SIZE
-#define FIR_HEADROOM_POW_2  2
 
 void Fir_Init(void);
 void Fir_LoadImpulse(const int16_t * pImpulse);
