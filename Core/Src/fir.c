@@ -12,7 +12,7 @@
 #include "arm_math.h"
 
 static q31_t firCoeffs[FIR_TAPS_NUM] CCM_RAM_SECTION;
-static q31_t firState[FIR_BLOCK_SIZE + FIR_TAPS_NUM] CCM_RAM_SECTION;
+static q31_t firState[FIR_STATE_SIZE] CCM_RAM_SECTION;
 static arm_fir_instance_q31 firInstance CCM_RAM_SECTION;
 
 void Fir_Init(void)
@@ -25,7 +25,7 @@ void Fir_LoadImpulse(const int16_t * pImpulse)
   int i;
   for (i = 0; i < FIR_TAPS_NUM; i++)
   {
-    firCoeffs[i] = pImpulse[i] << 16;
+    firCoeffs[i] = pImpulse[(FIR_TAPS_NUM - 1) - i] << 16;
   }
   memset(firState, 0, sizeof(firState));
 }

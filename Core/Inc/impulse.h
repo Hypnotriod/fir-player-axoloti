@@ -10,6 +10,7 @@
 
 typedef struct {
   const int16_t *impulse;
+  const int32_t size;
   const char *vendor;
   const char *description;
 } Impulse_t;

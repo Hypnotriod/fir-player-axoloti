@@ -63,21 +63,19 @@ void UI_Update(void)
 {
   if (encoder0Rotations)
   {
-    if (encoder0Rotations > 0)
-    {
-      impulseIndex = (impulseIndex + 1) % IMPULSES_NUM;
-    }
-    else
-    {
-      impulseIndex = (IMPULSES_NUM + impulseIndex - 1) % IMPULSES_NUM;
-    }
+    impulseIndex = encoder0Rotations > 0
+      ? (impulseIndex + 1) % IMPULSES_NUM
+      :(IMPULSES_NUM + impulseIndex - 1) % IMPULSES_NUM;
+
     Audio_MuteInput();
     Audio_Mute();
     UI_LoadImpulse();
     Audio_OnFirstBufferHalfProcessed();
     while (!Audio_FirstBufferHalfReady) {};
+    Audio_OnFirstBufferHalfProcessed();
     Audio_OnSecondBufferHalfProcessed();
-    Dsp_Process();
+    while (!Audio_SecondBufferHalfReady) {};
+    Audio_OnSecondBufferHalfProcessed();
     Audio_UnmuteInput();
     encoder0Rotations = 0;
   }

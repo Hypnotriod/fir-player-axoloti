@@ -10,8 +10,9 @@
 
 #include "audio.h"
 
-#define FIR_TAPS_NUM        1896 // 43 ms
+#define FIR_TAPS_NUM        640
 #define FIR_BLOCK_SIZE      AUDIO_CIRCULAR_BUFFER_QUARTER_SIZE
+#define FIR_STATE_SIZE      FIR_TAPS_NUM + FIR_BLOCK_SIZE * 3     // https://arm-software.github.io/CMSIS-DSP/v1.15.0/group__FIR.html
 
 void Fir_Init(void);
 void Fir_LoadImpulse(const int16_t * pImpulse);
