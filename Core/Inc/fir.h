@@ -15,7 +15,7 @@
 #define FIR_STATE_SIZE      FIR_TAPS_NUM + FIR_BLOCK_SIZE * 3     // https://arm-software.github.io/CMSIS-DSP/v1.15.0/group__FIR.html
 
 void Fir_Init(void);
-void Fir_LoadImpulse(const int16_t * pImpulse);
-void Fir_Process(int32_t * pBuff);
+void Fir_LoadImpulse(const int16_t * pImpulse, int32_t size);
+void Fir_Process(int32_t *pBuff);
 
 #endif /* INC_FIR_H_ */

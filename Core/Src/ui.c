@@ -4,7 +4,7 @@
  *  Created on: Jul 23, 2022
  *      Author: IPikin
  */
- 
+
 #include "ui.h"
 #include "main.h"
 #include "impulse.h"
@@ -65,11 +65,12 @@ void UI_Update(void)
   {
     impulseIndex = encoder0Rotations > 0
       ? (impulseIndex + 1) % IMPULSES_NUM
-      :(IMPULSES_NUM + impulseIndex - 1) % IMPULSES_NUM;
+      : (IMPULSES_NUM + impulseIndex - 1) % IMPULSES_NUM;
 
     Audio_MuteInput();
     Audio_Mute();
     UI_LoadImpulse();
+    UI_Redraw();
     Audio_OnFirstBufferHalfProcessed();
     while (!Audio_FirstBufferHalfReady) {};
     Audio_OnFirstBufferHalfProcessed();
@@ -83,12 +84,18 @@ void UI_Update(void)
 
 void UI_LoadImpulse(void)
 {
-  Fir_LoadImpulse(Impulses[impulseIndex].impulse);
+  const Impulse_t * imp = &Impulses[impulseIndex];
+  Fir_LoadImpulse(imp->impulse, imp->size);
+}
+
+void UI_Redraw(void)
+{
+  const Impulse_t * imp = &Impulses[impulseIndex];
   SSD1306_Fill(Black);
   SSD1306_DrawBitmap(0, 0, speakerIcon, 32, 30, White);
   SSD1306_SetCursor(0, 32);
-  SSD1306_WriteString(Impulses[impulseIndex].vendor, Font_11x18, White);
+  SSD1306_WriteString(imp->vendor, Font_11x18, White);
   SSD1306_SetCursor(0, 52);
-  SSD1306_WriteString(Impulses[impulseIndex].description, Font_6x8, White);
+  SSD1306_WriteString(imp->description, Font_6x8, White);
   SSD1306_UpdateScreen();
 }

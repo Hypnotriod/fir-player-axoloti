@@ -20,10 +20,16 @@ void Fir_Init(void)
   arm_fir_init_q31(&firInstance, FIR_TAPS_NUM, firCoeffs, firState, FIR_BLOCK_SIZE);
 }
 
-void Fir_LoadImpulse(const int16_t * pImpulse)
+void Fir_LoadImpulse(const int16_t * pImpulse, int32_t size)
 {
-  int i;
-  for (i = 0; i < FIR_TAPS_NUM; i++)
+  int32_t i;
+
+  for (i = 0; i < FIR_TAPS_NUM - size; i++)
+  {
+    firCoeffs[i] = 0;
+  }
+
+  for (; i < FIR_TAPS_NUM; i++)
   {
     firCoeffs[i] = pImpulse[(FIR_TAPS_NUM - 1) - i] << 16;
   }
@@ -32,18 +38,18 @@ void Fir_LoadImpulse(const int16_t * pImpulse)
 
 void Fir_Process(int32_t * pBuff)
 {
-  int i;
-  
+  int32_t i;
+
   q31_t input[FIR_BLOCK_SIZE];
   q31_t output[FIR_BLOCK_SIZE];
-  
+
   for (i = 0; i < FIR_BLOCK_SIZE; i++)
   {
     input[i] = pBuff[i * AUDIO_CHANNELS_NUM];
   }
-  
+
   arm_fir_fast_q31(&firInstance, input, output, FIR_BLOCK_SIZE);
-  
+
   for (i = 0; i < FIR_BLOCK_SIZE; i++)
   {
     pBuff[i * AUDIO_CHANNELS_NUM] = pBuff[i * AUDIO_CHANNELS_NUM + 1] = output[i];

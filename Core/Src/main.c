@@ -107,7 +107,8 @@ int main(void)
   SSD1306_Init();
   Fir_Init();
   UI_LoadImpulse();
-  HAL_Delay(100); // Wait for codec
+  UI_Redraw();
+  HAL_Delay(100); // Wait for a codec
   Audio_Init();
   Audio_Start();
   /* USER CODE END 2 */
