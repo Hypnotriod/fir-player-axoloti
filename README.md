@@ -1,10 +1,10 @@
 # fir-player-axoloti
 
-FIR player implementation example based on the [Axoloti](http://www.axoloti.com/) board and [CMSIS-DSP](https://arm-software.github.io/CMSIS-DSP/v1.16.2/group__FIR.html) library  
+FIR player implementation example based on the [Axoloti](https://cdm.link/axoloti-makes-any-music-hardware-you-can-imagine/) board and [CMSIS-DSP](https://arm-software.github.io/CMSIS-DSP/v1.16.2/group__FIR.html) library  
 Includes impulses from the [Bass IR Pack](https://shift-line.com/irpackbass)
 
 ## Hardware
-* 30 Detent Rotary Encoder Module (1 pulse per detent)
+* EC11 20 Detent Rotary Encoder Module (1 pulse per detent)
 * SSD1306 OLED Display Module (128 x 64)
 
 ## Connection
